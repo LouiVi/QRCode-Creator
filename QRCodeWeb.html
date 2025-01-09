@@ -11,6 +11,23 @@
     {
        
     }
+    
+const ForceDownload = function (url, fileName) {
+	var xhr = new XMLHttpRequest();
+	xhr.open("GET", url, true);
+	xhr.responseType = "blob";
+	xhr.onload = function() {
+		var urlCreator = this.Window.URL || this.Window.webkitURL;
+		var imageUrl = urlCreator.createObjectURL(this.response);
+		var tag = this.Document.createElement("a");
+		tag.href = imageUrl;
+		tag.download = fileName;
+		this.Document.body.appendChild(tag);
+		tag.click();
+		this.Document.body.removeChild(tag);
+	};
+	xhr.send();
+};
 </script>
 
 <style>
