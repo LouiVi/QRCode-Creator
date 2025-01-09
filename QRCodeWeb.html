@@ -1,0 +1,30 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width">
+    <script src="ds:/Sys/app.js"></script>
+     <script src="qrcode.js"></script>
+</head>
+	
+<script>
+    //Called after application is started.
+    function OnStart()
+    {
+       
+    }
+</script>
+
+<style>
+	body { background-color: #ffffff; }
+    #qrcode
+    { 
+        color: #3333ef;
+    }
+</style>
+
+<body onload="app.Start()">
+<center>	<div id="qrcode"></div></center>
+<script type="text/javascript">
+new QRCode(document.getElementById("qrcode"), "[CODE]");
+</script>
+</body>
+</html>
