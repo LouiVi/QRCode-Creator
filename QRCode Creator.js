@@ -25,7 +25,9 @@ lay.AddChild( lay2 );
 	web = app.CreateWebView( 1, -1, "IgnoreErrors" );
 	lay.AddChild( web );
 	
-	
+	btn2 = app.CreateButton( "Share", 0.25, 0.065 );
+	btn2.SetOnTouch( btn2_OnTouch )
+	lay.AddChild( btn2 )
 	
 	//Add layout to app.	
 	app.AddLayout( lay );
@@ -36,11 +38,18 @@ lay.AddChild( lay2 );
 
 function btn_OnTouch ()
 {
-app.ScreenShot( "/storage/emulated/0/Download/QR.jpg", 100);
-app.GetThumbnail( "/storage/emulated/0/Download/QR.jpg", "/storage/emulated/0/Download/QR.png", DW()/3, DH()/3);
+//web.Execute( 'html2canvas(document.getElementById("qrcode")).then(function(canvas) {document.body/*.innerHTML="<hr>"+canvas+canvas;alert(canvas.outerHTML);*/.appendChild(canvas);*/});' )
+web.Capture( pro = prompt("Enter the path to save the qrcode:","/storage/emulated/0/Download/QR.jpg" ));
+//app.ScreenShot( "/storage/emulated/0/Download/QR1.jpg", 100);
+//app.GetThumbnail( "/storage/emulated/0/Download/QR.jpg", "/storage/emulated/0/Download/QR.png", DW()/3, DH()/3);
 //web.Execute( "alert(document.body.outerHTML);" );
 	//web.Execute( "ForceDownload(document.getElementsByTagName('img')[0].src, prompt('Name for the qrcode'));");
 }
+function btn2_OnTouch()
+{
+	app.SendFile( pro );
+}
+
 
 function txt_Focus()
 {
